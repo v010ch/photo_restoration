@@ -33,11 +33,14 @@ def check_and_save_photo_before(inp_request) -> None:
 
 
 
-def prepare_for_publication(inp_request):
+def prepare_for_publication(inp_request) -> None:
     file = inp_request.files['before_name']
     filename = 'loaded_tmp.' + file.filename.split('.')[-1].lower()
     img = cv2.imread(os.path.join('.', app.config['UPLOAD_FOLDER'], filename), 
                      cv2.IMREAD_UNCHANGED)
+    img = cv2.resize(img, (640, 480))
+    cv2.imwrite(os.path.join('.', app.config['UPLOAD_FOLDER'], 'before.jpg'),
+        img)
 
     return 0
 
