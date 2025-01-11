@@ -63,7 +63,8 @@ def index_page(file_before_url: Optional[str] = ''):
     else:
         #print('get')
         pass
-        
+
+    return render_template('before_after.html')    
     return render_template('index.html')
 
 

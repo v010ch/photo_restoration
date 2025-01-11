@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="ru">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="{{ url_for('static', filename='fonts/icomoon/style.css') }}">
+
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/owl.carousel.min.css') }}">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap.min.css') }}">
+
+  <!-- Style -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/button.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/centered.css') }}">
+
+  <script>
+    function set_before_path() {
+      var bp = document.getElementById("before_path")
+      bp.value = "1111"
+   }
+  </script>
+    
+  <title>Загрузка фотографии</title>
+</head>
+
+<body style="background-color:#1e6070;">
+  <div class="verticalhorizontal">
+      <img src="{{ url_for('static', filename='tmp.jpg') }}" width="425" height="237">
+    
+      <form action="{{ url_for('index_page') }}" method=post enctype=multipart/form-data>    
+        <input type="file" name='before_name' id="before_name" accept="image/png, image/jpeg" class="button"/>
+        <button type='submit' id="submit" onclick="set_before_path()">Восстановить</button>
+        <input type="hidden" name="before_path" id="before_path" value="34657" />
+      </form>
+  </div>  
+</body>
+
+</html>

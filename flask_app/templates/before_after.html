@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="ru">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="{{ url_for('static', filename='fonts/icomoon/style.css') }}">
+
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/owl.carousel.min.css') }}">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap.min.css') }}">
+
+  <!-- Style -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/button.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/centered.css') }}">
+
+  <title>Обработанное фото</title>
+</head>
+
+<body style="background-color:#1e6070;">
+  <button type='submit' id="submit" >Вернуться к выбору фото</button>
+  <center>
+      <div class="verticalhorizontal">
+          <img src="{{ url_for('static', filename='before.jpg') }}" width="425" height="237">
+          <img src="{{ url_for('static', filename='after.jpg') }}" width="425" height="237">
+      </div> 
+      <button type='submit' id="save_photo" >Сохранить</button>
+  </center>
+</body>
+
+</html>
