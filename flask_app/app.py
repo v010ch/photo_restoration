@@ -69,6 +69,14 @@ def index_page(file_before_url: Optional[str] = ''):
 
 
 
+@app.route("/restored", methods=["POST", "GET"]):
+def restored():
+    print(request.method)
+    if request.method == "POST":
+        pass
+
+    return render_template('before_after.html')    
+
 
 if __name__ == "__main__":
     app.run()

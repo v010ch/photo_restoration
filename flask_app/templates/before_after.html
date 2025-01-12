@@ -25,10 +25,15 @@
 <body style="background-color:#1e6070;">
   <button type='submit' id="submit" >Вернуться к выбору фото</button>
   <center>
-      <div class="verticalhorizontal">
-          <img src="{{ url_for('static', filename='before.jpg') }}" width="425" height="237">
-          <img src="{{ url_for('static', filename='after.jpg') }}" width="425" height="237">
-      </div> 
+      <tr>
+          <td>
+              <img src="{{ url_for('static', filename='before.jpg') }}" width="425" height="237">
+          </td>
+          <td>
+              <img src="{{ url_for('static', filename='after.jpg') }}" width="425" height="237">
+          </td>
+      </tr>
+      <br>
       <button type='submit' id="save_photo" >Сохранить</button>
   </center>
 </body>
