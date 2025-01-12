@@ -3,7 +3,7 @@ from typing import Optional
 import time
 
 import cv2
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request, redirect, url_for
 
 
 UPLOAD_FOLDER = 'static'
@@ -59,17 +59,17 @@ def index_page(file_before_url: Optional[str] = ''):
         tmp = request.files
         print(type(tmp))
 
-        return render_template('index.html')
+        return redirect(url_for('restored'))
     else:
         #print('get')
         pass
 
-    return render_template('before_after.html')    
     return render_template('index.html')
+    return render_template('before_after.html')
 
 
 
-@app.route("/restored", methods=["POST", "GET"]):
+@app.route("/restored", methods=["POST", "GET"])
 def restored():
     print(request.method)
     if request.method == "POST":
