@@ -73,7 +73,9 @@ def index_page(file_before_url: Optional[str] = ''):
 def restored():
     print(request.method)
     if request.method == "POST":
-        pass
+        print(request.form)
+        if ('back' in request.form) and request.form['back']:
+            return redirect(url_for('index_page'))
 
     return render_template('before_after.html')    
 

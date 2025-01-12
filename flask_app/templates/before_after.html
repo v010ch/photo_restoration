@@ -23,7 +23,9 @@
 </head>
 
 <body style="background-color:#1e6070;">
-  <button type='submit' id="submit" >Вернуться к выбору фото</button>
+  <form action="{{ url_for('restored') }}" method=post enctype=multipart/form-data>   
+      <button type='submit' id="submit" name="back" value=True>Вернуться к выбору фото</button>
+  </form>
   <center>
       <tr>
           <td>

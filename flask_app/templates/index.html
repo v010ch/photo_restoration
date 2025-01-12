@@ -30,7 +30,7 @@
 </head>
 
 <body style="background-color:#1e6070;">
-  <div class="verticalhorizontal">
+  <center>
       <img src="{{ url_for('static', filename='tmp.jpg') }}" width="425" height="237">
     
       <form action="{{ url_for('index_page') }}" method=post enctype=multipart/form-data>    
@@ -38,7 +38,7 @@
         <button type='submit' id="submit" onclick="set_before_path()">Восстановить</button>
         <input type="hidden" name="before_path" id="before_path" value="34657" />
       </form>
-  </div>  
+  </center>  
 </body>
 
 </html>
