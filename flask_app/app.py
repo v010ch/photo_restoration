@@ -3,7 +3,7 @@ from typing import Optional
 import time
 
 import cv2
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, flash, render_template, request, redirect, url_for
 
 
 UPLOAD_FOLDER = 'static'
@@ -11,6 +11,7 @@ UPLOAD_FOLDER = 'static'
 
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+
 
 
 def check_and_save_photo_before(inp_request) -> None:
@@ -33,15 +34,36 @@ def check_and_save_photo_before(inp_request) -> None:
 
 
 
+def restore(inp_img) -> None:
+
+    cv2.imwrite(os.path.join('.', app.config['UPLOAD_FOLDER'], 'after.jpg'),
+               inp_img)
+    return 0
+
+
+
 def prepare_for_publication(inp_request) -> None:
     file = inp_request.files['before_name']
     filename = 'loaded_tmp.' + file.filename.split('.')[-1].lower()
     img = cv2.imread(os.path.join('.', app.config['UPLOAD_FOLDER'], filename), 
                      cv2.IMREAD_UNCHANGED)
-    img = cv2.resize(img, (640, 480))
+    w = img.shape[1]
+    h = img.shape[0]
+    
+    if w >= h:
+        devider = w / 640
+    else:
+        devider = h / 640
+    
+    new_w = int(w / devider)
+    new_h = int(h / devider)
+    img = cv2.resize(img, (new_w, new_h))
+    
     cv2.imwrite(os.path.join('.', app.config['UPLOAD_FOLDER'], 'before.jpg'),
         img)
 
+    restore(img)
+    
     return 0
 
 
@@ -55,6 +77,7 @@ def index_page(file_before_url: Optional[str] = ''):
         print('post')
         check_and_save_photo_before(request)
         prepare_for_publication(request)
+        
 
         tmp = request.files
         print(type(tmp))
